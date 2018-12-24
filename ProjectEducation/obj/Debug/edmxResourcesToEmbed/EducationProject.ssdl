@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EducationProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EducationPackages">
+    <Key>
+      <PropertyRef Name="ProgramId" />
+    </Key>
+    <Property Name="ProgramId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProgramName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupLessonTimes">
+    <Key>
+      <PropertyRef Name="GroupLessonTimeId" />
+    </Key>
+    <Property Name="GroupLessonTimeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupLessonTimeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupLessonTimeStart" Type="time" Precision="7" Nullable="false" />
+    <Property Name="GroupLessonTimeEnd" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="GroupId" />
+    </Key>
+    <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProgramId" Type="int" Nullable="false" />
+    <Property Name="TeacherId" Type="int" Nullable="false" />
+    <Property Name="MentorId" Type="int" Nullable="false" />
+    <Property Name="GroupTypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupTypes">
+    <Key>
+      <PropertyRef Name="GroupTypeId" />
+    </Key>
+    <Property Name="GroupTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupTypeDuration" Type="int" Nullable="false" />
+    <Property Name="GroupLessonTimeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mentors">
+    <Key>
+      <PropertyRef Name="MentorId" />
+    </Key>
+    <Property Name="MentorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProgramId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="MentorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MentorSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MentorEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MentorPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="MentorPhoto" Type="nvarchar(max)" />
+    <Property Name="MentorBio" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="MessageId" />
+    </Key>
+    <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MessageSubject" Type="nvarchar(max)" />
+    <Property Name="MessageContent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MessageSendTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupId" Type="int" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentBirthDate" Type="date" />
+    <Property Name="StudentPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="StudentRegistrationDate" Type="datetime" Nullable="false" />
+    <Property Name="StudentPhoto" Type="nvarchar(max)" />
+    <Property Name="StudentBio" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentTasks">
+    <Key>
+      <PropertyRef Name="StudentTaskId" />
+    </Key>
+    <Property Name="StudentTaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskStartDate" Type="date" Nullable="false" />
+    <Property Name="TaskEndDate" Type="date" Nullable="false" />
+    <Property Name="TaskId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="TaskId" />
+    </Key>
+    <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TaskSubject" Type="nvarchar(max)" />
+    <Property Name="TaskBody" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Teachers">
+    <Key>
+      <PropertyRef Name="TeacherId" />
+    </Key>
+    <Property Name="TeacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProgramId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="TeacherName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TeacherSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TeacherEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TeacherPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="TeacherPhoto" Type="nvarchar(max)" />
+    <Property Name="TeacherBio" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserTypeId" Type="int" Nullable="false" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTypes">
+    <Key>
+      <PropertyRef Name="UserTypeId" />
+    </Key>
+    <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="EducationProjectModelStoreContainer">
+    <EntitySet Name="EducationPackages" EntityType="Self.EducationPackages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupLessonTimes" EntityType="Self.GroupLessonTimes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupTypes" EntityType="Self.GroupTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mentors" EntityType="Self.Mentors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentTasks" EntityType="Self.StudentTasks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

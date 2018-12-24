@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EducationProjectModelStoreContainer" CdmEntityContainer="EducationProjectEntities">
+    <EntitySetMapping Name="EducationPackages">
+      <EntityTypeMapping TypeName="EducationProjectModel.EducationPackage">
+        <MappingFragment StoreEntitySet="EducationPackages">
+          <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+          <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupLessonTimes">
+      <EntityTypeMapping TypeName="EducationProjectModel.GroupLessonTime">
+        <MappingFragment StoreEntitySet="GroupLessonTimes">
+          <ScalarProperty Name="GroupLessonTimeId" ColumnName="GroupLessonTimeId" />
+          <ScalarProperty Name="GroupLessonTimeName" ColumnName="GroupLessonTimeName" />
+          <ScalarProperty Name="GroupLessonTimeStart" ColumnName="GroupLessonTimeStart" />
+          <ScalarProperty Name="GroupLessonTimeEnd" ColumnName="GroupLessonTimeEnd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="EducationProjectModel.Group">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="MentorId" ColumnName="MentorId" />
+          <ScalarProperty Name="GroupTypeId" ColumnName="GroupTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupTypes">
+      <EntityTypeMapping TypeName="EducationProjectModel.GroupType">
+        <MappingFragment StoreEntitySet="GroupTypes">
+          <ScalarProperty Name="GroupTypeId" ColumnName="GroupTypeId" />
+          <ScalarProperty Name="GroupTypeName" ColumnName="GroupTypeName" />
+          <ScalarProperty Name="GroupTypeDuration" ColumnName="GroupTypeDuration" />
+          <ScalarProperty Name="GroupLessonTimeId" ColumnName="GroupLessonTimeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mentors">
+      <EntityTypeMapping TypeName="EducationProjectModel.Mentor">
+        <MappingFragment StoreEntitySet="Mentors">
+          <ScalarProperty Name="MentorId" ColumnName="MentorId" />
+          <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MentorName" ColumnName="MentorName" />
+          <ScalarProperty Name="MentorSurname" ColumnName="MentorSurname" />
+          <ScalarProperty Name="MentorEmail" ColumnName="MentorEmail" />
+          <ScalarProperty Name="MentorPhone" ColumnName="MentorPhone" />
+          <ScalarProperty Name="MentorPhoto" ColumnName="MentorPhoto" />
+          <ScalarProperty Name="MentorBio" ColumnName="MentorBio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="EducationProjectModel.Message">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+          <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
+          <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+          <ScalarProperty Name="MessageSendTime" ColumnName="MessageSendTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="EducationProjectModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentSurname" ColumnName="StudentSurname" />
+          <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+          <ScalarProperty Name="StudentBirthDate" ColumnName="StudentBirthDate" />
+          <ScalarProperty Name="StudentPhone" ColumnName="StudentPhone" />
+          <ScalarProperty Name="StudentRegistrationDate" ColumnName="StudentRegistrationDate" />
+          <ScalarProperty Name="StudentPhoto" ColumnName="StudentPhoto" />
+          <ScalarProperty Name="StudentBio" ColumnName="StudentBio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentTasks">
+      <EntityTypeMapping TypeName="EducationProjectModel.StudentTask">
+        <MappingFragment StoreEntitySet="StudentTasks">
+          <ScalarProperty Name="StudentTaskId" ColumnName="StudentTaskId" />
+          <ScalarProperty Name="TaskStartDate" ColumnName="TaskStartDate" />
+          <ScalarProperty Name="TaskEndDate" ColumnName="TaskEndDate" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="EducationProjectModel.Task">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskSubject" ColumnName="TaskSubject" />
+          <ScalarProperty Name="TaskBody" ColumnName="TaskBody" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="EducationProjectModel.Teacher">
+        <MappingFragment StoreEntitySet="Teachers">
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+          <ScalarProperty Name="TeacherSurname" ColumnName="TeacherSurname" />
+          <ScalarProperty Name="TeacherEmail" ColumnName="TeacherEmail" />
+          <ScalarProperty Name="TeacherPhone" ColumnName="TeacherPhone" />
+          <ScalarProperty Name="TeacherPhoto" ColumnName="TeacherPhoto" />
+          <ScalarProperty Name="TeacherBio" ColumnName="TeacherBio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="EducationProjectModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="EducationProjectModel.UserType">
+        <MappingFragment StoreEntitySet="UserTypes">
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EducationProjectModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EducationPackages">
+          <Key>
+            <PropertyRef Name="ProgramId" />
+          </Key>
+          <Property Name="ProgramId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupLessonTimes">
+          <Key>
+            <PropertyRef Name="GroupLessonTimeId" />
+          </Key>
+          <Property Name="GroupLessonTimeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupLessonTimeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupLessonTimeStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="GroupLessonTimeEnd" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProgramId" Type="int" Nullable="false" />
+          <Property Name="TeacherId" Type="int" Nullable="false" />
+          <Property Name="MentorId" Type="int" Nullable="false" />
+          <Property Name="GroupTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupTypes">
+          <Key>
+            <PropertyRef Name="GroupTypeId" />
+          </Key>
+          <Property Name="GroupTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupTypeDuration" Type="int" Nullable="false" />
+          <Property Name="GroupLessonTimeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mentors">
+          <Key>
+            <PropertyRef Name="MentorId" />
+          </Key>
+          <Property Name="MentorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="MentorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MentorSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MentorEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MentorPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="MentorPhoto" Type="nvarchar(max)" />
+          <Property Name="MentorBio" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MessageSubject" Type="nvarchar(max)" />
+          <Property Name="MessageContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MessageSendTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentBirthDate" Type="date" />
+          <Property Name="StudentPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentRegistrationDate" Type="datetime" Nullable="false" />
+          <Property Name="StudentPhoto" Type="nvarchar(max)" />
+          <Property Name="StudentBio" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentTasks">
+          <Key>
+            <PropertyRef Name="StudentTaskId" />
+          </Key>
+          <Property Name="StudentTaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskStartDate" Type="date" Nullable="false" />
+          <Property Name="TaskEndDate" Type="date" Nullable="false" />
+          <Property Name="TaskId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tasks">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TaskSubject" Type="nvarchar(max)" />
+          <Property Name="TaskBody" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="TeacherName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeacherSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeacherEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeacherPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="TeacherPhoto" Type="nvarchar(max)" />
+          <Property Name="TeacherBio" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTypes">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EducationProjectModel1StoreContainer">
+          <EntitySet Name="EducationPackages" EntityType="Self.EducationPackages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupLessonTimes" EntityType="Self.GroupLessonTimes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupTypes" EntityType="Self.GroupTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mentors" EntityType="Self.Mentors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentTasks" EntityType="Self.StudentTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EducationProjectModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EducationPackage">
+          <Key>
+            <PropertyRef Name="ProgramId" />
+          </Key>
+          <Property Name="ProgramId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupLessonTime">
+          <Key>
+            <PropertyRef Name="GroupLessonTimeId" />
+          </Key>
+          <Property Name="GroupLessonTimeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupLessonTimeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupLessonTimeStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="GroupLessonTimeEnd" Type="Time" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProgramId" Type="Int32" Nullable="false" />
+          <Property Name="TeacherId" Type="Int32" Nullable="false" />
+          <Property Name="MentorId" Type="Int32" Nullable="false" />
+          <Property Name="GroupTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupType">
+          <Key>
+            <PropertyRef Name="GroupTypeId" />
+          </Key>
+          <Property Name="GroupTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupTypeDuration" Type="Int32" Nullable="false" />
+          <Property Name="GroupLessonTimeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mentor">
+          <Key>
+            <PropertyRef Name="MentorId" />
+          </Key>
+          <Property Name="MentorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="MentorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MentorSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MentorEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MentorPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MentorPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MentorBio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MessageSubject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MessageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MessageSendTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StudentSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StudentEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StudentBirthDate" Type="DateTime" Precision="0" />
+          <Property Name="StudentPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentRegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StudentPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StudentBio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentTask">
+          <Key>
+            <PropertyRef Name="StudentTaskId" />
+          </Key>
+          <Property Name="StudentTaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TaskEndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TaskId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TaskSubject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaskBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TeacherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TeacherSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TeacherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TeacherPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherBio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EducationProjectEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EducationPackages" EntityType="Self.EducationPackage" />
+          <EntitySet Name="GroupLessonTimes" EntityType="Self.GroupLessonTime" />
+          <EntitySet Name="Groups" EntityType="Self.Group" />
+          <EntitySet Name="GroupTypes" EntityType="Self.GroupType" />
+          <EntitySet Name="Mentors" EntityType="Self.Mentor" />
+          <EntitySet Name="Messages" EntityType="Self.Message" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="StudentTasks" EntityType="Self.StudentTask" />
+          <EntitySet Name="Tasks" EntityType="Self.Task" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EducationProjectModel1StoreContainer" CdmEntityContainer="EducationProjectEntities1">
+          <EntitySetMapping Name="EducationPackages">
+            <EntityTypeMapping TypeName="EducationProjectModel1.EducationPackage">
+              <MappingFragment StoreEntitySet="EducationPackages">
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupLessonTimes">
+            <EntityTypeMapping TypeName="EducationProjectModel1.GroupLessonTime">
+              <MappingFragment StoreEntitySet="GroupLessonTimes">
+                <ScalarProperty Name="GroupLessonTimeId" ColumnName="GroupLessonTimeId" />
+                <ScalarProperty Name="GroupLessonTimeName" ColumnName="GroupLessonTimeName" />
+                <ScalarProperty Name="GroupLessonTimeStart" ColumnName="GroupLessonTimeStart" />
+                <ScalarProperty Name="GroupLessonTimeEnd" ColumnName="GroupLessonTimeEnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="EducationProjectModel1.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="MentorId" ColumnName="MentorId" />
+                <ScalarProperty Name="GroupTypeId" ColumnName="GroupTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupTypes">
+            <EntityTypeMapping TypeName="EducationProjectModel1.GroupType">
+              <MappingFragment StoreEntitySet="GroupTypes">
+                <ScalarProperty Name="GroupTypeId" ColumnName="GroupTypeId" />
+                <ScalarProperty Name="GroupTypeName" ColumnName="GroupTypeName" />
+                <ScalarProperty Name="GroupTypeDuration" ColumnName="GroupTypeDuration" />
+                <ScalarProperty Name="GroupLessonTimeId" ColumnName="GroupLessonTimeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mentors">
+            <EntityTypeMapping TypeName="EducationProjectModel1.Mentor">
+              <MappingFragment StoreEntitySet="Mentors">
+                <ScalarProperty Name="MentorId" ColumnName="MentorId" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MentorName" ColumnName="MentorName" />
+                <ScalarProperty Name="MentorSurname" ColumnName="MentorSurname" />
+                <ScalarProperty Name="MentorEmail" ColumnName="MentorEmail" />
+                <ScalarProperty Name="MentorPhone" ColumnName="MentorPhone" />
+                <ScalarProperty Name="MentorPhoto" ColumnName="MentorPhoto" />
+                <ScalarProperty Name="MentorBio" ColumnName="MentorBio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="EducationProjectModel1.Message">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
+                <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+                <ScalarProperty Name="MessageSendTime" ColumnName="MessageSendTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="EducationProjectModel1.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentSurname" ColumnName="StudentSurname" />
+                <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+                <ScalarProperty Name="StudentBirthDate" ColumnName="StudentBirthDate" />
+                <ScalarProperty Name="StudentPhone" ColumnName="StudentPhone" />
+                <ScalarProperty Name="StudentRegistrationDate" ColumnName="StudentRegistrationDate" />
+                <ScalarProperty Name="StudentPhoto" ColumnName="StudentPhoto" />
+                <ScalarProperty Name="StudentBio" ColumnName="StudentBio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentTasks">
+            <EntityTypeMapping TypeName="EducationProjectModel1.StudentTask">
+              <MappingFragment StoreEntitySet="StudentTasks">
+                <ScalarProperty Name="StudentTaskId" ColumnName="StudentTaskId" />
+                <ScalarProperty Name="TaskStartDate" ColumnName="TaskStartDate" />
+                <ScalarProperty Name="TaskEndDate" ColumnName="TaskEndDate" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="EducationProjectModel1.Task">
+              <MappingFragment StoreEntitySet="Tasks">
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="TaskSubject" ColumnName="TaskSubject" />
+                <ScalarProperty Name="TaskBody" ColumnName="TaskBody" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="EducationProjectModel1.Teacher">
+              <MappingFragment StoreEntitySet="Teachers">
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="TeacherSurname" ColumnName="TeacherSurname" />
+                <ScalarProperty Name="TeacherEmail" ColumnName="TeacherEmail" />
+                <ScalarProperty Name="TeacherPhone" ColumnName="TeacherPhone" />
+                <ScalarProperty Name="TeacherPhoto" ColumnName="TeacherPhoto" />
+                <ScalarProperty Name="TeacherBio" ColumnName="TeacherBio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="EducationProjectModel1.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="EducationProjectModel1.UserType">
+              <MappingFragment StoreEntitySet="UserTypes">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
